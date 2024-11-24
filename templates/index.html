@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Viewer</title>
+</head>
+<body>
+    <h1>Photo Viewer</h1>
+    <form action="/detect" method="post">
+        <button type="submit">Run Detection</button>
+    </form>
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+        {% for photo in photos %}
+        <div style="border: 1px solid #ccc; padding: 10px;">
+            <img src="data:image/jpeg;base64,{{ photo.photo }}" style="width: 100%;">
+            <p>{{ photo.description }}</p>
+            <p>Items: {{ photo.items or 'Not Detected' }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
